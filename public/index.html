@@ -1,1 +1,168 @@
+<!DOCTYPE html>
+<html lang="sd">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#0757c9">
+<title>Sindhi AI Learning Assistant</title>
+<style>
+:root{--blue:#075bd8;--navy:#06275d;--sky:#eaf4ff;--ink:#10264a;--muted:#71809a;--line:#e3ebf5;--green:#10b981;--orange:#f97360;--purple:#8b5cf6;--card:#fff;--bg:#f4f8fd}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);font-family:system-ui,-apple-system,"Noto Sans Arabic","Noto Sans",Arial,sans-serif;color:var(--ink)}button,input,select,textarea{font:inherit}button{cursor:pointer}.app{max-width:480px;min-height:100vh;margin:auto;background:#f8fbff;position:relative;box-shadow:0 0 30px #09234b15;padding-bottom:86px}.topbar{height:64px;background:#fff;display:flex;align-items:center;justify-content:space-between;padding:0 18px;border-bottom:1px solid var(--line);position:sticky;top:0;z-index:5}.brand{display:flex;align-items:center;gap:10px}.cap{font-size:30px}.brand strong{display:block;font-size:17px;line-height:1.1}.brand small{color:var(--muted);font-size:11px}.iconbtn{border:0;background:transparent;font-size:22px;color:var(--ink)}main{padding:16px}.screen{display:none}.screen.active{display:block}.hero{background:linear-gradient(135deg,#063578,#0874e9);color:white;border-radius:20px;padding:20px;display:flex;gap:10px;align-items:center;min-height:158px;overflow:hidden;position:relative;box-shadow:0 10px 24px #075bd82b}.hero:after{content:"";position:absolute;width:170px;height:170px;border-radius:50%;background:#ffffff12;right:-60px;top:-55px}.robot{font-size:64px;filter:drop-shadow(0 5px 8px #001c4d66)}.hero h2{font-size:19px;margin:0 0 8px}.hero p{font-size:13px;line-height:1.7;margin:0;max-width:240px}.section-title{display:flex;justify-content:space-between;align-items:center;margin:22px 2px 12px}.section-title h3{margin:0;font-size:17px}.section-title span{font-size:12px;color:var(--blue)}.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.tile{border:1px solid var(--line);border-radius:15px;background:white;min-height:94px;padding:12px 5px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;box-shadow:0 3px 8px #15355a06;color:var(--ink)}.tile .emoji{font-size:26px}.tile b{font-size:12px}.tile small{font-size:10px;color:var(--muted)}.tile.blue .emoji{color:var(--blue)}.tile.orange .emoji{color:var(--orange)}.tile.purple .emoji{color:var(--purple)}.tile.green .emoji{color:var(--green)}.tile:active,.subject:active{transform:scale(.98)}.panel{background:white;border:1px solid var(--line);border-radius:17px;padding:15px;margin-bottom:12px}.muted{color:var(--muted);font-size:13px}.lang-row{display:flex;gap:8px;margin:16px 0}.lang-row button{flex:1;border:0;border-radius:12px;padding:11px 5px;color:white;font-weight:700;background:var(--blue)}.lang-row button:nth-child(2){background:#10a66a}.lang-row button:nth-child(3){background:#9333ea}.primary{border:0;background:linear-gradient(90deg,#0865e5,#1686fa);color:white;border-radius:12px;padding:12px 15px;font-weight:700;width:100%;box-shadow:0 5px 12px #075bd82b}.secondary{border:1px solid var(--line);background:#fff;border-radius:10px;padding:10px 12px;color:var(--ink)}.subject-list{display:grid;gap:9px}.subject{display:flex;align-items:center;gap:12px;background:white;border:1px solid var(--line);border-radius:14px;padding:13px;text-align:left;width:100%;color:var(--ink)}.subicon{height:42px;width:42px;border-radius:12px;display:grid;place-items:center;color:white;font-size:22px;flex-shrink:0}.subject b{display:block;font-size:14px}.subject small{display:block;color:var(--muted);font-size:11px;margin-top:2px}.arrow{margin-left:auto;color:#93a1b5}.chips{display:flex;gap:7px;flex-wrap:wrap;margin:10px 0}.chip{border:1px solid var(--line);border-radius:99px;background:white;padding:7px 11px;font-size:12px}.chip.selected{background:#e4f0ff;color:var(--blue);border-color:#b8d7ff}.field{display:block;width:100%;padding:12px;border:1px solid #dbe5f1;border-radius:11px;background:white;margin:8px 0 12px;color:var(--ink)}textarea.field{min-height:86px;resize:vertical}.chatbox{height:53vh;min-height:300px;max-height:540px;overflow:auto;background:#f0f6fd;border:1px solid var(--line);border-radius:16px;padding:12px;display:flex;flex-direction:column;gap:10px}.bubble{max-width:88%;padding:11px 13px;border-radius:15px;font-size:13px;line-height:1.65;white-space:pre-wrap}.bubble.bot{background:white;border:1px solid var(--line);align-self:flex-start;border-top-left-radius:4px}.bubble.user{background:#0867e5;color:white;align-self:flex-end;border-top-right-radius:4px}.chat-compose{display:flex;gap:7px;margin-top:10px}.chat-compose input{min-width:0;flex:1;border:1px solid var(--line);border-radius:12px;padding:12px;background:white}.send{width:48px;border:0;border-radius:12px;background:var(--blue);color:white;font-size:20px}.quiz-question{font-weight:700;line-height:1.7;margin:12px 0}.option{display:flex;align-items:center;gap:9px;border:1px solid var(--line);border-radius:11px;padding:11px;margin:8px 0;background:#fff;font-size:13px}.option input{accent-color:var(--blue)}.result{padding:12px;border-radius:11px;background:#dcfce7;color:#166534;font-size:13px;margin-top:12px}.note{border:1px solid var(--line);background:white;border-radius:14px;padding:13px;margin:10px 0}.note h4{margin:0 0 5px;font-size:14px}.note p{margin:0;font-size:12px;line-height:1.7;color:#53647d}.profile-head{background:linear-gradient(135deg,#06449c,#0879e9);color:white;border-radius:18px;padding:22px;display:flex;align-items:center;gap:13px}.avatar{height:58px;width:58px;border-radius:50%;display:grid;place-items:center;background:#ffffff2b;font-size:30px}.profile-head h2{margin:0;font-size:18px}.profile-head p{margin:4px 0 0;font-size:12px;opacity:.85}.setting{display:flex;align-items:center;gap:12px;padding:15px 2px;border-bottom:1px solid var(--line);font-size:14px}.setting:last-child{border:0}.setting span:last-child{margin-left:auto;color:var(--muted);font-size:12px}.bottomnav{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:min(480px,100%);height:72px;background:#06275d;color:#d7e7ff;display:flex;justify-content:space-around;align-items:center;z-index:10;box-shadow:0 -5px 20px #001c4930;padding-bottom:env(safe-area-inset-bottom)}.navbtn{border:0;background:none;color:inherit;display:flex;flex-direction:column;align-items:center;gap:4px;font-size:10px;min-width:55px}.navbtn .ni{font-size:21px}.navbtn.active{color:#50d8ff}.footer{text-align:center;color:#8b9bb2;font-size:10px;padding:22px 0 8px}.notice{font-size:11px;color:#71809a;line-height:1.6;margin:10px 2px}.hidden{display:none!important}@media(min-width:600px){body{padding:20px 0}.app{border-radius:22px;overflow:hidden;min-height:90vh}.bottomnav{bottom:20px;border-radius:0 0 22px 22px}.topbar{position:relative}}
+</style>
+</head>
+<body>
+<div class="app">
+<header class="topbar">
+<button class="iconbtn" id="menuBtn" aria-label="Menu">☰</button>
+<div class="brand"><span class="cap">🎓</span><div><strong>Sindhi AI</strong><small id="brandSubtitle">Learning Assistant</small></div></div>
+<select id="languageSelect" aria-label="Choose language" style="max-width:112px;border:1px solid #dbe5f1;border-radius:10px;padding:7px;background:white;color:#10264a;font-size:12px"><option value="sd">سنڌي</option><option value="ur">اردو</option><option value="en">English</option></select>
+</header>
+<main>
+<section class="screen active" id="home">
+<div class="hero"><div class="robot">🤖</div><div><h2 id="welcome">سلام! ڀلي ڪري آيا</h2><p>پنهنجي ٻوليءَ ۾ سکو، سوال پڇو ۽ امتحان جي تياري ڪريو.</p></div></div>
+<div class="lang-row"><button onclick="setLang('sd')">سنڌي</button><button onclick="setLang('ur')">اردو</button><button onclick="setLang('en')">English</button></div>
+<div class="section-title"><h3>سکڻ شروع ڪريو</h3><span>Learn • Ask • Grow</span></div>
+<div class="grid">
+<button class="tile blue" onclick="showScreen('subjects')"><span class="emoji">🎓</span><b>ڪلاس</b><small>Class 1–12</small></button>
+<button class="tile orange" onclick="showScreen('subjects')"><span class="emoji">📖</span><b>مضمون</b><small>Subjects</small></button>
+<button class="tile purple" onclick="showScreen('chat')"><span class="emoji">💬</span><b>سوال جواب</b><small>Ask AI</small></button>
+<button class="tile green" onclick="showScreen('mcqs')"><span class="emoji">📝</span><b>MCQs</b><small>Practice</small></button>
+<button class="tile blue" onclick="showScreen('notes')"><span class="emoji">📘</span><b>سبق</b><small>Study Material</small></button>
+<button class="tile orange" onclick="showScreen('notes')"><span class="emoji">💡</span><b>جلدي ورجاءُ</b><small>Quick Revision</small></button>
+</div>
+<div class="section-title"><h3>اڄ ڇا سکڻ چاهيو ٿا؟</h3></div>
+<div class="panel"><b>🌱 ننڍن قدمن سان وڏي ڪاميابي</b><p class="muted">هڪ مضمون چونڊيو، سبق پڙهو ۽ آخر ۾ MCQs حل ڪري پنهنجي ڄاڻ آزمائيو.</p><button class="primary" onclick="showScreen('chat')">AI کان سوال پڇو →</button></div>
+<p class="notice">Demo version: هن نموني ۾ ڪجهه جواب اڳواٽ شامل آهن. حقيقي AI جوابن لاءِ محفوظ AI API ڪنيڪشن شامل ڪرڻو پوندو.</p>
+</section>
+<section class="screen" id="subjects">
+<div class="section-title"><h3>📚 مضمون چونڊيو</h3><span onclick="showScreen('home')">واپس ←</span></div>
+<div class="panel"><label class="muted" for="classSelect">ڪلاس چونڊيو</label><select id="classSelect" class="field"><option>Class 10</option><option>Class 9</option><option>Class 8</option><option>Class 7</option><option>Class 6</option><option>Class 5</option><option>Class 11</option><option>Class 12</option></select></div>
+<div class="subject-list" id="subjectList"></div>
+</section>
+<section class="screen" id="chat">
+<div class="section-title"><h3>🤖 AI کان سوال پڇو</h3><span>Demo Chat</span></div>
+<div class="chips"><button class="chip" onclick="quickAsk('What is photosynthesis?')">Photosynthesis</button><button class="chip" onclick="quickAsk('Explain atoms in simple words')">Atoms</button><button class="chip" onclick="quickAsk('What is a noun?')">English Grammar</button></div>
+<div class="chatbox" id="chatbox"><div class="bubble bot">سلام! مان توهان جو سکيا اسسٽنٽ آهيان. سائنس، انگريزي يا ڪنهن به سبق بابت سوال پڇو. 😊</div></div>
+<div class="chat-compose"><input id="chatInput" placeholder="پنهنجو سوال لکو..." autocomplete="off"><button class="send" onclick="sendChat()">➤</button></div>
+<p class="notice">تعليمي مظاهري لاءِ بنيادي جواب شامل آهن. اهم معلومات ڪتاب يا استاد سان ضرور چيڪ ڪريو.</p>
+</section>
+<section class="screen" id="mcqs">
+<div class="section-title"><h3>📝 MCQs ڪويز</h3><span>Practice</span></div>
+<div class="panel"><label class="muted">مضمون</label><select id="quizSubject" class="field"><option value="science">Science / سائنس</option><option value="english">English / انگريزي</option><option value="math">Mathematics / رياضي</option></select><label class="muted">سوالن جو تعداد</label><select id="quizCount" class="field"><option value="3">3 سوال</option><option value="5" selected>5 سوال</option></select><button class="primary" onclick="startQuiz()">MCQs شروع ڪريو ↻</button></div>
+<div id="quizArea"></div>
+</section>
+<section class="screen" id="notes">
+<div class="section-title"><h3>📘 سبق ۽ نوٽس</h3><span>Study Material</span></div>
+<div class="chips"><button class="chip selected" onclick="filterNotes('all',this)">سڀ</button><button class="chip" onclick="filterNotes('science',this)">Science</button><button class="chip" onclick="filterNotes('english',this)">English</button><button class="chip" onclick="filterNotes('math',this)">Math</button></div>
+<div id="notesList"></div>
+</section>
+<section class="screen" id="profile">
+<div class="profile-head"><div class="avatar">👨‍🎓</div><div><h2>Sindhi Student</h2><p>Learn • Improve • Succeed</p></div></div>
+<div class="panel" style="margin-top:15px"><div class="setting">👤 <b>منهنجو پروفائل</b><span>›</span></div><div class="setting">📝 <b>منهنجا نوٽس</b><span>›</span></div><div class="setting">⭐ <b>پسنديده سبق</b><span>›</span></div><div class="setting">⚙️ <b>سيٽنگز</b><span>›</span></div><div class="setting">🌐 <b>ٻولي</b><span id="currentLang">سنڌي</span></div><div class="setting">ℹ️ <b>ايپ بابت</b><span>Version 1.0</span></div></div>
+<div class="panel"><b>درباره ايپ</b><p class="muted">Sindhi AI Learning Assistant جو مقصد شاگردن لاءِ سنڌي، اردو ۽ انگريزيءَ ۾ سکيا کي آسان بڻائڻ آهي.</p></div>
+</section>
+<div class="footer">Sindhi AI Learning Assistant · Knowledge Today • Success Tomorrow</div>
+</main>
+<nav class="bottomnav">
+<button class="navbtn active" data-screen="home" onclick="showScreen('home')"><span class="ni">⌂</span>Home</button>
+<button class="navbtn" data-screen="subjects" onclick="showScreen('subjects')"><span class="ni">▤</span>Subjects</button>
+<button class="navbtn" data-screen="chat" onclick="showScreen('chat')"><span class="ni">☏</span>Chat</button>
+<button class="navbtn" data-screen="mcqs" onclick="showScreen('mcqs')"><span class="ni">▦</span>MCQs</button>
+<button class="navbtn" data-screen="profile" onclick="showScreen('profile')"><span class="ni">♙</span>Profile</button>
+</nav>
+</div>
+<script>
+const subjects=[
+{name:'رياضي',en:'Mathematics',icon:'π',color:'#1769e8',key:'math'},
+{name:'سائنس',en:'Science',icon:'⚗',color:'#10b981',key:'science'},
+{name:'ڪيمسٽري',en:'Chemistry',icon:'⚗',color:'#8b5cf6',key:'science'},
+{name:'فزڪس',en:'Physics',icon:'⚛',color:'#f59e0b',key:'science'},
+{name:'بايولوجي',en:'Biology',icon:'♧',color:'#0ea875',key:'science'},
+{name:'ڪمپيوٽر',en:'Computer Science',icon:'▣',color:'#0891b2',key:'computer'},
+{name:'انگريزي',en:'English',icon:'📕',color:'#ef4444',key:'english'},
+{name:'اردو',en:'Urdu',icon:'ا',color:'#ec4899',key:'urdu'}
+];
+const notes=[
+{type:'science',title:'Photosynthesis — ضيائي تالیف',desc:'ٻوٽا سج جي روشني، پاڻي ۽ ڪاربان ڊاءِ آڪسائيڊ جي مدد سان پنهنجي خوراڪ ٺاهيندا آهن. هن عمل کي Photosynthesis چئبو آهي.'},
+{type:'science',title:'Atom — ايٽم',desc:'ايٽم مادي جو تمام ننڍڙو بنيادي ذرڙو آهي. ان ۾ پروٽان، نيوٽران ۽ اليڪٽران شامل ٿي سگهن ٿا.'},
+{type:'english',title:'Noun — اسم',desc:'A noun is the name of a person, place, thing, or idea. مثال: Ali, school, book, happiness.'},
+{type:'math',title:'Algebra — الجبرا',desc:'الجبرا ۾ اڻڄاتل عددن لاءِ اکر استعمال ٿيندا آهن. مثال: x + 2 = 5، تنهنڪري x = 3.'},
+{type:'science',title:'States of Matter — مادي جون حالتون',desc:'مادي جون عام ٽي حالتون آهن: ٺوس (Solid)، پاڻياٺ (Liquid) ۽ گئس (Gas).'}
+];
+const quizzes={
+science:[
+{q:'ٻوٽا پنهنجي خوراڪ ڪهڙي عمل سان ٺاهيندا آهن؟',o:['Respiration','Photosynthesis','Digestion','Evaporation'],a:1,why:'Photosynthesis ۾ ٻوٽا سج جي روشني استعمال ڪن ٿا.'},
+{q:'ايٽم جي مرڪز کي ڇا چئبو آهي؟',o:['Nucleus','Cell','Leaf','Orbit'],a:0,why:'ايٽم جي مرڪز کي Nucleus چئبو آهي.'},
+{q:'پاڻي جو ڪيميائي فارمولو ڪهڙو آهي؟',o:['CO₂','O₂','H₂O','NaCl'],a:2,why:'پاڻي ۾ هائيڊروجن جا ٻه ۽ آڪسيجن جو هڪ ايٽم هوندو آهي.'},
+{q:'ٻوٽن جو سائو رنگ ڪهڙي مادّي سبب آهي؟',o:['Chlorophyll','Protein','Calcium','Iron'],a:0,why:'Chlorophyll روشني جذب ڪري ٿو.'},
+{q:'قوت (Force) جي SI unit ڪهڙي آهي؟',o:['Joule','Newton','Watt','Volt'],a:1,why:'قوت جي SI unit نيوٽن آهي.'}],
+english:[
+{q:'Which word is a noun?',o:['Quickly','Beautiful','School','Run'],a:2,why:'School هڪ جاءِ جو نالو آهي، تنهنڪري noun آهي.'},
+{q:'What is the plural of “child”?',o:['Childs','Children','Childes','Childrens'],a:1,why:'Child جو صحيح plural Children آهي.'},
+{q:'Choose the correct article: ___ apple',o:['A','An','Thee','No article'],a:1,why:'Apple جي شروعات vowel sound سان ٿئي ٿي، تنهنڪري An.'}],
+math:[
+{q:'x + 2 = 5، ته x جي قيمت ڇا آهي؟',o:['2','3','5','7'],a:1,why:'ٻنهي پاسن مان 2 ڪٽڻ سان x = 3.'},
+{q:'7 × 8 = ؟',o:['54','56','64','48'],a:1,why:'7 ضرب 8 برابر 56.'},
+{q:'مثلث جي اندروني زاوين جو مجموعو ڪيترو آهي؟',o:['90°','180°','270°','360°'],a:1,why:'هر عام مثلث جي زاوين جو مجموعو 180° آهي.'}]
+};
+let lang='sd',currentQuiz=[],quizSubmitted=false;
+function showScreen(id){document.querySelectorAll('.screen').forEach(s=>s.classList.toggle('active',s.id===id));document.querySelectorAll('.navbtn').forEach(b=>b.classList.toggle('active',b.dataset.screen===id));window.scrollTo({top:0,behavior:'smooth'});if(id==='notes')renderNotes('all');}
 
+const translations={
+sd:{subtitle:'سکيا اسسٽنٽ',welcome:'سلام! ڀلي ڪري آيا',hero:'پنهنجي ٻوليءَ ۾ سکو، سوال پڇو ۽ امتحان جي تياري ڪريو.',start:'سکڻ شروع ڪريو',class:'ڪلاس',subjects:'مضمون',ask:'سوال جواب',mcqs:'MCQs',notes:'سبق',revision:'جلدي ورجاءُ',today:'اڄ ڇا سکڻ چاهيو ٿا؟',encourage:'🌱 ننڍن قدمن سان وڏي ڪاميابي',encourageText:'هڪ مضمون چونڊيو، سبق پڙهو ۽ MCQs حل ڪري پنهنجي ڄاڻ آزمائيو.',askBtn:'AI کان سوال پڇو →',choose:'📚 مضمون چونڊيو',chooseClass:'ڪلاس چونڊيو',askTitle:'🤖 AI کان سوال پڇو',placeholder:'پنهنجو سوال لکو...',quizTitle:'📝 MCQs ڪويز',topic:'مضمون',count:'سوالن جو تعداد',startQuiz:'MCQs شروع ڪريو ↻',profile:'پروفائل',student:'سنڌي شاگرد',learn:'سکو • بهتر ٿيو • ڪامياب ٿيو',myProfile:'منهنجو پروفائل',myNotes:'منهنجا نوٽس',favorites:'پسنديده سبق',settings:'سيٽنگز',language:'ٻولي',about:'ايپ بابت',footer:'علم اڄ • ڪاميابي سڀاڻي',chatIntro:'سلام! مان توهان جو سکيا اسسٽنٽ آهيان. سائنس، انگريزي يا ڪنهن به سبق بابت سوال پڇو. 😊',check:'جواب چيڪ ڪريو ✓',noNotice:'في الحال ڪا نئين اطلاع ناهي.'},
+ur:{subtitle:'لرننگ اسسٹنٹ',welcome:'السلام علیکم! خوش آمدید',hero:'اپنی زبان میں سیکھیں، سوال پوچھیں اور امتحان کی تیاری کریں۔',start:'سیکھنا شروع کریں',class:'کلاس',subjects:'مضامین',ask:'سوال و جواب',mcqs:'MCQs',notes:'سبق',revision:'فوری دہرائی',today:'آج آپ کیا سیکھنا چاہتے ہیں؟',encourage:'🌱 چھوٹے قدم، بڑی کامیابی',encourageText:'ایک مضمون منتخب کریں، سبق پڑھیں اور MCQs حل کرکے اپنی معلومات جانچیں۔',askBtn:'AI سے سوال پوچھیں →',choose:'📚 مضمون منتخب کریں',chooseClass:'کلاس منتخب کریں',askTitle:'🤖 AI سے سوال پوچھیں',placeholder:'اپنا سوال لکھیں...',quizTitle:'📝 MCQs کوئز',topic:'مضمون',count:'سوالات کی تعداد',startQuiz:'MCQs شروع کریں ↻',profile:'پروفائل',student:'طالب علم',learn:'سیکھیں • بہتر بنیں • کامیاب ہوں',myProfile:'میرا پروفائل',myNotes:'میرے نوٹس',favorites:'پسندیدہ اسباق',settings:'سیٹنگز',language:'زبان',about:'ایپ کے بارے میں',footer:'آج علم • کل کامیابی',chatIntro:'السلام علیکم! میں آپ کا تعلیمی اسسٹنٹ ہوں۔ سائنس، انگریزی یا کسی بھی سبق کے بارے میں سوال پوچھیں۔ 😊',check:'جوابات چیک کریں ✓',noNotice:'فی الحال کوئی نئی اطلاع نہیں۔'},
+en:{subtitle:'Learning Assistant',welcome:'Hello! Welcome',hero:'Learn in your language, ask questions, and prepare for exams.',start:'Start Learning',class:'Classes',subjects:'Subjects',ask:'Ask AI',mcqs:'MCQs',notes:'Study Notes',revision:'Quick Revision',today:'What would you like to learn today?',encourage:'🌱 Small steps, big success',encourageText:'Choose a subject, study a lesson, then test your knowledge with MCQs.',askBtn:'Ask AI a question →',choose:'📚 Choose a subject',chooseClass:'Choose class',askTitle:'🤖 Ask AI',placeholder:'Type your question...',quizTitle:'📝 MCQ Quiz',topic:'Subject',count:'Number of questions',startQuiz:'Start MCQs ↻',profile:'Profile',student:'Student',learn:'Learn • Improve • Succeed',myProfile:'My Profile',myNotes:'My Notes',favorites:'Favorite Lessons',settings:'Settings',language:'Language',about:'About App',footer:'Knowledge Today • Success Tomorrow',chatIntro:'Hello! I am your learning assistant. Ask me about science, English, or any lesson. 😊',check:'Check Answers ✓',noNotice:'There are no new notifications.'}
+};
+function setLang(l){
+ lang=l; const t=translations[l]||translations.sd;
+ document.documentElement.lang=l==='sd'?'sd':l; document.getElementById('languageSelect').value=l;
+ document.getElementById('currentLang').textContent=l==='sd'?'سنڌي':l==='ur'?'اردو':'English';
+ document.getElementById('welcome').textContent=t.welcome;
+ document.getElementById('brandSubtitle').textContent=t.subtitle;
+ const hp=document.querySelector('.hero p');if(hp)hp.textContent=t.hero;
+ const tiles=document.querySelectorAll('#home .tile');
+ const labels=[[t.class,'Class 1–12'],[t.subjects,'Subjects'],[t.ask,'Ask AI'],[t.mcqs,'Practice'],[t.notes,'Study Material'],[t.revision,'Quick Revision']];
+ tiles.forEach((el,i)=>{el.querySelector('b').textContent=labels[i][0];el.querySelector('small').textContent=labels[i][1]});
+ const hs=document.querySelectorAll('#home .section-title h3');if(hs[0])hs[0].textContent=t.start;if(hs[1])hs[1].textContent=t.today;
+ const homePanel=document.querySelector('#home .panel');if(homePanel){homePanel.querySelector('b').textContent=t.encourage;homePanel.querySelector('p').textContent=t.encourageText;homePanel.querySelector('button').textContent=t.askBtn}
+ const titleIds={subjects:t.choose,chat:t.askTitle,mcqs:t.quizTitle,notes:t.notes,profile:t.profile};
+ Object.keys(titleIds).forEach(id=>{const h=document.querySelector('#'+id+' .section-title h3');if(h)h.textContent=titleIds[id]});
+ const cl=document.querySelector('#subjects .panel label');if(cl)cl.textContent=t.chooseClass;
+ document.getElementById('chatInput').placeholder=t.placeholder;
+ const intro=document.querySelector('#chatbox .bubble.bot');if(intro)intro.textContent=t.chatIntro;
+ const ql=document.querySelectorAll('#mcqs .panel label');if(ql[0])ql[0].textContent=t.topic;if(ql[1])ql[1].textContent=t.count;
+ const qb=document.querySelector('#mcqs .panel .primary');if(qb)qb.textContent=t.startQuiz;
+ const navs=document.querySelectorAll('.navbtn'),navLabels=[l==='sd'?'گهر':l==='ur'?'ہوم':'Home',t.subjects,t.ask,t.mcqs,t.profile];
+ navs.forEach((b,i)=>{const icon=b.querySelector('.ni');b.innerHTML='';b.appendChild(icon);const s=document.createElement('span');s.textContent=navLabels[i];b.appendChild(s)});
+ const ph=document.querySelector('.profile-head h2');if(ph)ph.textContent=t.student;const pp=document.querySelector('.profile-head p');if(pp)pp.textContent=t.learn;
+ const sb=document.querySelectorAll('.setting b'),names=[t.myProfile,t.myNotes,t.favorites,t.settings,t.language,t.about];sb.forEach((e,i)=>{if(names[i])e.textContent=names[i]});
+ const foot=document.querySelector('.footer');if(foot)foot.textContent='Sindhi AI Learning Assistant · '+t.footer;
+}
+document.getElementById('languageSelect').addEventListener('change',e=>setLang(e.target.value));
+
+function renderSubjects(){document.getElementById('subjectList').innerHTML=subjects.map(s=>`<button class="subject" onclick="openSubject('${s.key}','${s.en}')"><span class="subicon" style="background:${s.color}">${s.icon}</span><span><b>${s.name}</b><small>${s.en}</small></span><span class="arrow">›</span></button>`).join('')}
+function openSubject(key,name){showScreen('notes');renderNotes(key==='computer'?'science':key);if(key==='urdu')renderNotes('all')}
+function renderNotes(filter){const list=filter==='all'?notes:notes.filter(n=>n.type===filter);document.getElementById('notesList').innerHTML=list.map(n=>`<article class="note"><h4>${n.title}</h4><p>${n.desc}</p><button class="secondary" style="margin-top:10px" onclick="quickAsk('Explain ${n.title} in simple Sindhi')">AI سان وڌيڪ سمجهو →</button></article>`).join('')||'<p class="muted">هن مضمون جا نوٽس جلد شامل ٿيندا.</p>'}
+function filterNotes(type,btn){document.querySelectorAll('#notes .chip').forEach(c=>c.classList.remove('selected'));btn.classList.add('selected');renderNotes(type)}
+function addBubble(text,type){const b=document.createElement('div');b.className='bubble '+type;b.textContent=text;const box=document.getElementById('chatbox');box.appendChild(b);box.scrollTop=box.scrollHeight}
+function answerFor(q){const x=q.toLowerCase();if(x.includes('photo')||x.includes('photosynthesis')||x.includes('ٻوٽا'))return 'Photosynthesis (ضيائي تالیف): ٻوٽا سج جي روشني، پاڻي ۽ ڪاربان ڊاءِ آڪسائيڊ استعمال ڪري خوراڪ ٺاهيندا آهن. هن عمل دوران آڪسيجن پڻ خارج ٿيندي آهي.';if(x.includes('atom')||x.includes('ايٽم'))return 'ايٽم مادي جو بنيادي ذرڙو آهي. ان جي مرڪز ۾ نيوڪليس هوندو آهي، جنهن ۾ پروٽان ۽ نيوٽران هوندا آهن؛ اليڪٽران ان جي چوڌاري موجود هوندا آهن.';if(x.includes('noun')||x.includes('اسم')||x.includes('grammar'))return 'A noun is the name of a person, place, thing, or idea. مثال: Ali (شخص)، school (جاءِ)، book (شيءِ)، happiness (خيال/ڪيفيت).';if(x.includes('water')||x.includes('پاڻي'))return 'پاڻي جو ڪيميائي فارمولو H₂O آهي. هڪ پاڻي جي ماليڪيول ۾ هائيڊروجن جا ٻه ۽ آڪسيجن جو هڪ ايٽم هوندو آهي.';if(x.includes('force')||x.includes('قوت'))return 'Force (قوت) ڌڪ يا ڇڪ آهي، جيڪا شيءِ جي حرڪت يا شڪل بدلائي سگهي ٿي. ان جي SI unit Newton آهي.';if(x.includes('hello')||x.includes('سلام'))return 'وعليڪم السلام! 😊 توهان سائنس، انگريزي، رياضي يا ڪنهن به سبق بابت سوال پڇي سگهو ٿا.';return 'سٺو سوال! هن Demo ۾ ان سوال جو مڪمل AI جواب اڳواٽ موجود ناهي. مهرباني ڪري سوال کي آسان لفظن ۾ لکو يا پنهنجي استاد/درسي ڪتاب سان تصديق ڪريو. حقيقي AI API ڳنڍڻ سان عام سوالن جا جواب پاڻمرادو ملي سگهن ٿا.'}
+async function sendChat(){
+ const inp=document.getElementById('chatInput'),q=inp.value.trim();if(!q)return;
+ addBubble(q,'user');inp.value='';
+ const box=document.getElementById('chatbox'),waiting=document.createElement('div');
+ waiting.className='bubble bot';waiting.textContent=lang==='ur'?'جواب تیار ہو رہا ہے…':lang==='en'?'Thinking…':'جواب تيار ٿي رهيو آهي…';box.appendChild(waiting);box.scrollTop=box.scrollHeight;
+ try{
+  const res=await fetch('/api/chat',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({question:q,language:lang})});
+  const data=await res.json();waiting.textContent=res.ok?(data.answer||'No answer received.'):(data.error||'API request failed.');
+ }catch(e){waiting.textContent=lang==='ur'?'سرور سے رابطہ نہیں ہو سکا۔ backend چلائیں یا deploy کریں۔':lang==='en'?'Could not connect to the server. Start or deploy the backend first.':'سرور سان رابطو نه ٿيو. backend هلائيو يا deploy ڪريو.'}
+ box.scrollTop=box.scrollHeight;
+}
+function quickAsk(q){showScreen('chat');document.getElementById('chatInput').value=q;sendChat()}
+document.getElementById('chatInput').addEventListener('keydown',e=>{if(e.key==='Enter')sendChat()});
+function startQuiz(){const key=document.getElementById('quizSubject').value,count=Number(document.getElementById('quizCount').value);currentQuiz=(quizzes[key]||quizzes.science).slice(0,count);quizSubmitted=false;renderQuiz()}
+function renderQuiz(){document.getElementById('quizArea').innerHTML=currentQuiz.map((q,i)=>`<div class="panel"><div class="muted">سوال ${i+1} / ${currentQuiz.length}</div><div class="quiz-question">${q.q}</div>${q.o.map((o,j)=>`<label class="option"><input type="radio" name="q${i}" value="${j}"> ${String.fromCharCode(65+j)}) ${o}</label>`).join('')}<div id="why${i}"></div></div>`).join('')+`<button class="primary" onclick="submitQuiz()">${(translations[lang]||translations.sd).check}</button><div id="score"></div>`}
+function submitQuiz(){if(quizSubmitted)return;quizSubmitted=true;let score=0;currentQuiz.forEach((q,i)=>{const selected=document.querySelector(`input[name="q${i}"]:checked`);const val=selected?Number(selected.value):-1;if(val===q.a)score++;document.getElementById('why'+i).innerHTML=`<div class="result" style="background:${val===q.a?'#dcfce7':'#fff1f2'};color:${val===q.a?'#166534':'#9f1239'}">${val===q.a?'صحيح جواب!':'صحيح جواب: '+q.o[q.a]+'۔'} ${q.why}</div>`});document.getElementById('score').innerHTML=`<div class="panel"><h3>توهان جو نتيجو: ${score} / ${currentQuiz.length}</h3><p class="muted">${score===currentQuiz.length?'تمام سٺو! شاباس 🎉':'سٺي ڪوشش! سبق ٻيهر پڙهي وري ڪوشش ڪريو.'}</p><button class="secondary" onclick="startQuiz()">ٻيهر ڪوشش ڪريو</button></div>`}
+document.getElementById('menuBtn').onclick=()=>showScreen('profile');renderSubjects();renderNotes('all');startQuiz();setLang('sd');
+</script>
+</body>
+<+rent<
