@@ -1,6 +1,6 @@
 // Vercel serverless function: POST /api/chat
 // Gemini API key stays on the server; never place it in browser code.
-const MODEL = process.env.GEMINI_MODEL || "gemini-2.5-flash";
+const MODEL = process.env.GEMINI_MODEL || "gemini-3.8-flash";
 function sendError(res, status, message) { return res.status(status).json({ error: message }); }
 export const config = { api: { bodyParser: { sizeLimit: "4mb" } }, maxDuration: 60 };
 function extractText(data) {
